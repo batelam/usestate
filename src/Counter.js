@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './Counter.css';
 
 function Counter() {
     const[count, setCount] = useState(1)
@@ -10,13 +11,24 @@ function Counter() {
         )
         console.log(count)
     }
+    function resetCounter(){
+      setCount(
+        function(oldCount){
+          return oldCount = 1
+        }
+      )
+      console.log(count)
+    }
     return (
-    <div>
-      <h1>Counter</h1>
-      <p>Counter is at {count}</p>
-      <button onClick={incr}>Click to add 1 to Counter</button>
-    </div>
-    );
-}
+      <div>
+        <h1>Counter</h1>
+        <h2>Counter is at {count}</h2>
+        <button onClick={incr}>Click to add 1 to Counter</button>
+        <br></br>
+        <button onClick={resetCounter}>Click to reset the Counter</button>
 
-export default Counter;
+      </div>
+    );
+  }
+  
+  export default Counter;

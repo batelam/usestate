@@ -1,0 +1,15 @@
+button {
+    background-color:darkmagenta; 
+    color:azure;
+    margin:10px;
+}
+
+button:hover{
+    background-color:rgb(4, 250, 238);
+    color: black;
+}
+
+h2 {
+    color: blue;
+    
+}
