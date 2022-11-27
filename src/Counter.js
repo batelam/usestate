@@ -3,12 +3,16 @@ import './Counter.css';
 
 function Counter(props) {
     const {delta} = props
+    const {maxCounter} = props
     const[count, setCount] = useState(1)
     
     function incr(){
         setCount(
             function(oldCount){
-                return oldCount + delta
+              if ((oldCount + delta) > maxCounter){
+                return resetCounter()
+              }
+              return oldCount + delta
             }
         )
         
