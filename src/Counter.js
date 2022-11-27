@@ -1,9 +1,10 @@
 import { useState } from "react";
 import './Counter.css';
 
-function Counter() {
+function Counter(props) {
+    const {delta} = props
     const[count, setCount] = useState(1)
-    const[delta, setDelta] = useState(1)
+    
     function incr(){
         setCount(
             function(oldCount){
@@ -20,14 +21,9 @@ function Counter() {
       )
       
     }
-    function handleDelta(e){
-      console.log(e);
-      setDelta(Number(e.target.value))
-    }
     return (
       <div>
         <h1>Counter</h1>
-        <input type="number" value={delta} onChange={handleDelta}/>
         <h2>Counter is at {count}</h2>
         <button onClick={incr}>Click to add {delta} to Counter</button>
         <br></br>
