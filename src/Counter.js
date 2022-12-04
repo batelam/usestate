@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './Counter.css';
 
 function Counter(props) {
-    const {delta} = props
+    const {delta, getReset, needToReset} = props
     const {maxCounter} = props
     const[count, setCount] = useState(1)
     
+  useEffect(()=>{
+    if(needToReset){
+      setCount(0)
+      getReset(false)
+    }
+  },[needToReset, getReset])
+
     function incr(){
         setCount(
             function(oldCount){
@@ -18,11 +25,12 @@ function Counter(props) {
         
     }
     function resetCounter(){
-      setCount(
-        function(oldCount){
-          return oldCount = 1
-        }
-      )
+      getReset(true)
+      //setCount(
+        //function(oldCount){
+          //return oldCount = 1
+        //}
+      //)
       
     }
     return (
