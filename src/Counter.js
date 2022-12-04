@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import './Counter.css';
 
 function Counter(props) {
-    const {delta, getReset, needToReset} = props
+    const {delta, getReset, needToReset, getCounterValue} = props
     const {maxCounter} = props
     const[count, setCount] = useState(1)
     
@@ -19,11 +19,13 @@ function Counter(props) {
               if ((oldCount + delta) > maxCounter){
                 return resetCounter()
               }
+              getCounterValue(oldCount + delta)
               return oldCount + delta
             }
         )
         
     }
+    
     function resetCounter(){
       getReset(true)
       //setCount(
